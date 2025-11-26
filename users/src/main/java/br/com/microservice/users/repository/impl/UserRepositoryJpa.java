@@ -1,4 +1,4 @@
-package br.com.microservice.users.repository;
+package br.com.microservice.users.repository.impl;
 
 import br.com.microservice.users.model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
