@@ -1,7 +1,7 @@
 package br.com.microservice.users.service.impl;
 
 import br.com.microservice.users.model.UserModel;
-import br.com.microservice.users.repository.UserRepository;
+import br.com.microservice.users.repository.UserRepositoryJpa;
 import br.com.microservice.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository repository;
+    private final UserRepositoryJpa repository;
 
     @Autowired
-    public UserServiceImpl(final UserRepository repository) {
+    public UserServiceImpl(final UserRepositoryJpa repository) {
         this.repository = repository;
     }
 
