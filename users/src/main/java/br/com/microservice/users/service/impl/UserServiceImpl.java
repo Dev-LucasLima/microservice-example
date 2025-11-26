@@ -4,7 +4,9 @@ import br.com.microservice.users.model.UserModel;
 import br.com.microservice.users.repository.UserRepository;
 import br.com.microservice.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
