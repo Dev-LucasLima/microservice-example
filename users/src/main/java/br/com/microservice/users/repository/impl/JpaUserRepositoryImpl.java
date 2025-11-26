@@ -8,15 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class JpaUserRepositoryImpl implements UserRepository {
 
-    private final UserRepositoryJpa userRepositoryJpa;
+    private final JpaUserRepository jpaUserRepository;
 
     @Autowired
-    public JpaUserRepositoryImpl(final UserRepositoryJpa userRepositoryJpa) {
-        this.userRepositoryJpa = userRepositoryJpa;
+    public JpaUserRepositoryImpl(final JpaUserRepository jpaUserRepository) {
+        this.jpaUserRepository = jpaUserRepository;
     }
 
     @Override
     public UserModel saveUser(final UserModel userModel) {
-        return userRepositoryJpa.save(userModel);
+        return jpaUserRepository.save(userModel);
     }
 }
