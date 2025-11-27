@@ -25,7 +25,7 @@ public class RabbitMQBrokerConfiguration implements BrokerConfiguration {
     @Bean
     @Override
     public Queue createBrokerQueue() {
-        return new Queue(queueProvider.getQueueName(), true);
+        return queueProvider.createQueue();
     }
 
     @Bean

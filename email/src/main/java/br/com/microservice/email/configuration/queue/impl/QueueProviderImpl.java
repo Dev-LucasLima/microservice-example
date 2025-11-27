@@ -1,6 +1,7 @@
 package br.com.microservice.email.configuration.queue.impl;
 
 import br.com.microservice.email.configuration.queue.QueueProvider;
+import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -13,5 +14,10 @@ public class QueueProviderImpl implements QueueProvider {
     @Override
     public String getQueueName() {
         return queueName;
+    }
+
+    @Override
+    public Queue createQueue() {
+        return new Queue(queueName, true);
     }
 }
