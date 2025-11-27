@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitMQBrokerConfiguration implements BrokerConfiguration {
+public class RabbitMQBrokerConfigurationImpl implements BrokerConfiguration {
     @Autowired
     private QueueProvider queueProvider;
-    
+
     @Autowired
     private BrokerMessageConverter brokerMessageConverter;
 
