@@ -1,21 +1,17 @@
 package br.com.microservice.email.configuration.queue.impl;
 
 import br.com.microservice.email.configuration.queue.QueueProvider;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "broker.queue.email")
 public class QueueProviderImpl implements QueueProvider {
 
-    private String name;
+    @Value("${broker.queue.email.name}")
+    private String queueName;
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
+    public String getQueueName() {
+        return queueName;
     }
 }
