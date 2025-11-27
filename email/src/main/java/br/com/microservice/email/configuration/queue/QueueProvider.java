@@ -1,6 +1,6 @@
 package br.com.microservice.email.configuration.queue;
 
-public interface QueueNameProvider {
+public interface QueueProvider {
 
     String getName();
 
