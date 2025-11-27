@@ -5,7 +5,7 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("queueProvider")
 public class QueueProviderImpl implements QueueProvider {
 
     @Value("${broker.queue.email.name}")
