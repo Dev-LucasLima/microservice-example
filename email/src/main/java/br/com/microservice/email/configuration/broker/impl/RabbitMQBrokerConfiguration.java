@@ -11,16 +11,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQBrokerConfiguration implements BrokerConfiguration {
-
-    private final QueueProvider queueProvider;
-    private final BrokerMessageConverter brokerMessageConverter;
-
-    public RabbitMQBrokerConfiguration(
-            @Autowired final QueueProvider queueProvider,
-            @Autowired final BrokerMessageConverter brokerMessageConverter) {
-        this.queueProvider = queueProvider;
-        this.brokerMessageConverter = brokerMessageConverter;
-    }
+    @Autowired
+    private QueueProvider queueProvider;
+    
+    @Autowired
+    private BrokerMessageConverter brokerMessageConverter;
 
     @Bean
     @Override
