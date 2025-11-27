@@ -1,21 +1,22 @@
 package br.com.microservice.email.configuration.broker;
 
+import br.com.microservice.email.configuration.queue.QueueNameProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQBrokerConfiguration {
 
-    @Value("${broker.queue.email.name}")
-    private String queue;
+    @Autowired
+    private QueueNameProvider queueNameProvider;
 
     @Bean
-    public Queue emailQueue() {
-        return new Queue(queue, true);
+    public Queue getEmailQueue() {
+        return new Queue(queueNameProvider.getName(), true);
     }
 
     @Bean
