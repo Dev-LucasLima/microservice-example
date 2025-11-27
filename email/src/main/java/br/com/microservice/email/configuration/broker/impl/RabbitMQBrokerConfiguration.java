@@ -1,5 +1,6 @@
-package br.com.microservice.email.configuration.broker;
+package br.com.microservice.email.configuration.broker.impl;
 
+import br.com.microservice.email.configuration.broker.BrokerConfiguration;
 import br.com.microservice.email.configuration.messageConverter.BrokerMessageConverter;
 import br.com.microservice.email.configuration.queue.QueueNameProvider;
 import org.springframework.amqp.core.Queue;
@@ -9,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitMQBrokerConfiguration {
+public class RabbitMQBrokerConfiguration implements BrokerConfiguration {
 
     private final QueueNameProvider queueNameProvider;
     private final BrokerMessageConverter brokerMessageConverter;
@@ -22,12 +23,14 @@ public class RabbitMQBrokerConfiguration {
     }
 
     @Bean
-    public Queue getEmailQueue() {
+    @Override
+    public Queue createBrokerQueue() {
         return new Queue(queueNameProvider.getName(), true);
     }
 
     @Bean
-    public MessageConverter messageConverter() {
+    @Override
+    public MessageConverter createBrokerMessageConverter() {
         return brokerMessageConverter.createMessageConverter();
     }
 }
