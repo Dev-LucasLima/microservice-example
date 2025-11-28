@@ -7,7 +7,7 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JacksonBrokerMessageConverterImpl implements BrokerMessageConverter {
+public class Jackson2JsonBrokerMessageConverterImpl implements BrokerMessageConverter {
 
     @Override
     public MessageConverter createMessageConverter() {
