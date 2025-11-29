@@ -1,4 +1,4 @@
-package br.com.microservice.email.configuration.broker.messageConverter;
+package br.com.microservice.email.broker.messageConverter;
 
 import org.springframework.amqp.support.converter.MessageConverter;
 

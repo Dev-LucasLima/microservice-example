@@ -1,6 +1,6 @@
-package br.com.microservice.email.configuration.broker.queue.impl;
+package br.com.microservice.email.broker.queue.impl;
 
-import br.com.microservice.email.configuration.broker.queue.QueueProvider;
+import br.com.microservice.email.broker.queue.QueueProvider;
 import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
