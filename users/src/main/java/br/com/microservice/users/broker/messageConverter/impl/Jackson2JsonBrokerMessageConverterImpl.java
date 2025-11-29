@@ -1,6 +1,6 @@
-package br.com.microservice.users.broker.brokerMessageConverter.impl;
+package br.com.microservice.users.broker.messageConverter.impl;
 
-import br.com.microservice.users.broker.brokerMessageConverter.BrokerMessageConverter;
+import br.com.microservice.users.broker.messageConverter.BrokerMessageConverter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
