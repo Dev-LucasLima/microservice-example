@@ -1,7 +1,7 @@
-package br.com.microservice.email.consumer.impl;
+package br.com.microservice.email.broker.consumer.impl;
 
+import br.com.microservice.email.broker.consumer.BrokerConsumer;
 import br.com.microservice.email.broker.queue.QueueProvider;
-import br.com.microservice.email.consumer.BrokerConsumer;
 import br.com.microservice.email.dto.EmailRecordDto;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;

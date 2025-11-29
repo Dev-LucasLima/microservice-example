@@ -1,4 +1,4 @@
-package br.com.microservice.email.consumer;
+package br.com.microservice.email.broker.consumer;
 
 import org.springframework.messaging.handler.annotation.Payload;
 
