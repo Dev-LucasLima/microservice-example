@@ -6,7 +6,9 @@ import br.com.microservice.users.broker.template.BrokerTemplate;
 import br.com.microservice.users.dto.EmailModelDto;
 import br.com.microservice.users.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmailBrokerProducerImpl implements BrokerProducer<UserModel> {
 
 

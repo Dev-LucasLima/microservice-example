@@ -3,14 +3,14 @@ package br.com.microservice.users.broker.template.impl;
 import br.com.microservice.users.broker.template.BrokerTemplate;
 import br.com.microservice.users.dto.EmailModelDto;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmailModelDtoBrokerTemplateImpl implements BrokerTemplate<EmailModelDto> {
 
-    private final RabbitTemplate rabbitTemplate;
-
-    public EmailModelDtoBrokerTemplateImpl(final RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
-    }
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
 
     @Override
