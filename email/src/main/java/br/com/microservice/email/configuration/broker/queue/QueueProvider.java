@@ -1,4 +1,4 @@
-package br.com.microservice.email.configuration.queue;
+package br.com.microservice.email.configuration.broker.queue;
 
 import org.springframework.amqp.core.Queue;
 
