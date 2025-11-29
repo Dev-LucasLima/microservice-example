@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JpaUserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepository {
 
     private final JpaUserRepository jpaUserRepository;
 
     @Autowired
-    public JpaUserRepositoryImpl(final JpaUserRepository jpaUserRepository) {
+    public UserRepositoryImpl(final JpaUserRepository jpaUserRepository) {
         this.jpaUserRepository = jpaUserRepository;
     }
 
