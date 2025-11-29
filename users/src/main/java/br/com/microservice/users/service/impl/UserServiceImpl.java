@@ -6,6 +6,7 @@ import br.com.microservice.users.repository.UserRepository;
 import br.com.microservice.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,8 +17,17 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BrokerProducer<UserModel> brokerProducer;
 
+    @Transactional
     @Override
     public UserModel saveUser(final UserModel userModel) {
-        return repository.saveUser(userModel);
+        final UserModel responseUserModel = repository.saveUser(userModel);
+        if (responseUserModel == null) return responseUserModel;
+
+        notifyNewUserRegistration(responseUserModel);
+        return responseUserModel;
+    }
+
+    private void notifyNewUserRegistration(final UserModel userModel) {
+        brokerProducer.publishMessage(userModel);
     }
 }
