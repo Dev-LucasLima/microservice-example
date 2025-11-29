@@ -9,7 +9,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmailConsumer implements BrokerConsumer<EmailRecordDto> {
+public class RabbitMQConsumerImpl implements BrokerConsumer<EmailRecordDto> {
 
     @Autowired
     private QueueProvider queueProvider;
