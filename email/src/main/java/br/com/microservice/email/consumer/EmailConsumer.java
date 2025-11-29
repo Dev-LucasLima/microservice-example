@@ -15,7 +15,7 @@ public class EmailConsumer {
 
     @RabbitListener(queues = "#{@queueProvider.getQueueName()}")
     public void receiveEmail(@Payload final EmailRecordDto emailRecordDto) {
-        System.out.println("Received email message: " + emailRecordDto.message());
+        System.out.println("Received email message: " + emailRecordDto.text());
     }
 
 }
