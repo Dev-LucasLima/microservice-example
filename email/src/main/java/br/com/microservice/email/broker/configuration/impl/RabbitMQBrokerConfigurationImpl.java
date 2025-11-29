@@ -1,8 +1,8 @@
-package br.com.microservice.email.configuration.impl;
+package br.com.microservice.email.broker.configuration.impl;
 
+import br.com.microservice.email.broker.configuration.BrokerConfiguration;
 import br.com.microservice.email.broker.messageConverter.BrokerMessageConverter;
 import br.com.microservice.email.broker.queue.QueueProvider;
-import br.com.microservice.email.configuration.BrokerConfiguration;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
