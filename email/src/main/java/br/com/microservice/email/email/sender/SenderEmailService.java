@@ -4,6 +4,6 @@ import br.com.microservice.email.model.EmailModel;
 
 public interface SenderEmailService {
 
-    void sendEmail(final EmailModel emailModel);
+    EmailModel sendEmail(final EmailModel emailModel);
 
 }

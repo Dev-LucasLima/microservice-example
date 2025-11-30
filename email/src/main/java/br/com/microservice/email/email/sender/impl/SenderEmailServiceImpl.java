@@ -25,7 +25,7 @@ public class SenderEmailServiceImpl implements SenderEmailService {
     private JavaMailSender mailSender;
 
     @Override
-    public void sendEmail(final EmailModel emailModel) {
+    public EmailModel sendEmail(final EmailModel emailModel) {
         try {
             emailModel.setEmailFrom(emailFromProvider.getEmailFromAddress());
             emailModel.setSentDateEmail(LocalDateTime.now());
@@ -35,5 +35,7 @@ public class SenderEmailServiceImpl implements SenderEmailService {
         } catch (final MailException mailException) {
             emailModel.setStatusEmail(EmailStatus.FAILED);
         }
+
+        return emailModel;
     }
 }
