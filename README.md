@@ -2,55 +2,82 @@
 
 ## Overview
 
-This project is an educational example designed to explore and understand the core concepts of microservices architecture. It demonstrates how to build a distributed system using modern technologies and best practices for inter-service communication.
-
-This repository focuses on learning and experimentation: it integrates different technologies in a single example to illustrate how microservices interact. The project explores both asynchronous messaging (RabbitMQ) and REST-style interactions where appropriate, while emphasizing software design patterns and code quality principles.
+This project is an educational example designed to explore and understand the core concepts of microservices architecture. It demonstrates how to build a distributed system using modern technologies and best practices for inter-service communication. The project explores both asynchronous messaging (RabbitMQ) and synchronous REST APIs, while emphasizing software design patterns and code quality principles like SOLID and Clean Code.
 
 ## Technologies Used
 
 | Technology                                                                                                        | Description                                                                                                                      |
 | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| ![Java](https://img.shields.io/badge/Java%2017-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)           | Java 17 - Modern Java platform for building scalable applications                                                                |
+| ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)                | Java 17 - A modern, long-term support (LTS) version of Java for building scalable applications.                                  |
 | ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)             | Spring Framework - Comprehensive framework for building Java applications with dependency injection and configuration management |
-| ![REST](https://img.shields.io/badge/REST-005571?style=for-the-badge&logo=fastapi&logoColor=white)                | REST architecture - HTTP-based interaction style used where appropriate to expose endpoints and resources                        |
+| ![REST](https://img.shields.io/badge/REST%20API-005571?style=for-the-badge&logo=fastapi&logoColor=white)          | REST API - HTTP-based interaction style for exposing resources and enabling synchronous communication.                           |
 | ![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)         | Maven - Build automation and dependency management                                                                               |
 | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) | PostgreSQL - Relational database used in the User microservice                                                                   |
 | ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)                | MySQL - Relational database used in the Email microservice                                                                       |
 | ![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)       | RabbitMQ - Message broker for asynchronous communication between services                                                        |
 | ![CloudAMQP](https://img.shields.io/badge/CloudAMQP-36C5F0?style=for-the-badge&logo=rabbitmq&logoColor=white)     | CloudAMQP - Managed RabbitMQ service in the cloud                                                                                |
+| ![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)                | Gmail - Mail server to send email                                                                                                |
 
 ## Project Purpose
 
 This example project serves as a learning resource to:
 
-- **Understand Microservices**: Learn how to break down monolithic applications into independent, loosely-coupled services
-- **Spring Framework Expertise**: Master dependency injection, configuration management, and Spring's comprehensive ecosystem for building robust applications
-- **Service Communication**: Explore asynchronous messaging patterns using RabbitMQ for inter-service communication
-- **Database Independence**: Practice the database per service pattern by demonstrating how different microservices can use different database technologies (PostgreSQL for User service, MySQL for Email service)
-- **Data Persistence**: Understand how to design and manage multiple databases independently across different services
-- **Build Automation**: Implement build processes and dependency management using Maven
-- **Cloud Integration**: Understand how to integrate cloud-based services like CloudAMQP
-- **REST Architecture**: Understand where REST-style interactions fit alongside message-driven patterns; learn to expose HTTP resources when appropriate
-- **Design Patterns & Code Quality**: Apply design patterns and code-quality practices such as Clean Code, SOLID principles, and other best practices to keep services maintainable and testable
+- **Understand Microservices**: Decompose a monolith into independent, loosely-coupled services.
+- **Master Spring Framework**: Utilize dependency injection, configuration management, and the Spring ecosystem.
+- **Explore Service Communication**: Implement asynchronous messaging with RabbitMQ and synchronous REST APIs.
+- **Practice Database-per-Service**: Use different databases (PostgreSQL, MySQL) for different services.
+- **Apply Design Patterns & Code Quality**: Implement SOLID, Clean Code, and other best practices for maintainable services.
 
 ## Getting Started
 
 ### Prerequisites
 
 - Java 17 or higher
-- Maven 3.6.0 or higher
-- PostgreSQL 18 or higher (for User microservice)
+- Maven 3.8 or higher
+- PostgreSQL 16 or higher (for User microservice)
 - MySQL 8 or higher (for Email microservice)
-- Docker (optional, for RabbitMQ)
+- Docker and Docker Compose (optional, for local RabbitMQ setup)
 
 ### Installation
 
-1. Clone the repository
-2. Configure your PostgreSQL database (for User microservice)
-3. Configure your MySQL database (for Email microservice)
-4. Set up RabbitMQ (locally or use CloudAMQP)
-5. Build the project with Maven: `mvn clean install`
-6. Run the services
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/Dev-LucasLima/microservice-example
+   cd microservice-example
+   ```
+
+2. **Configure Databases:**
+   - Update the `application.properties` file in the `user-service` with your PostgreSQL connection details.
+   - Update the `application.properties` file in the `email-service` with your MySQL connection details.
+3. **Set up RabbitMQ:**
+   - Sign up for a free plan on CloudAMQP and update the `application.properties` in each service with your instance URL.
+4. **Configure Gmail:**
+
+   - Create new Gmail account
+   - Configure App password
+     - Gmail documentation to create App Password: [here](https://support.google.com/mail/answer/185833)
+   - Update the `application.properties` file in the `email-service` with your SMTP connetion details.
+
+   > [!WARNING]
+   > If you want other mail server, consult documentation this mail server to configure the `application.properties`
+
+5. **Build the Project:**
+
+   ```sh
+   mvn clean install
+   ```
+
+6. **Run the Services:**
+   Open two separate terminals and run the following commands:
+
+   ```sh
+   # Terminal 1: Run User Service
+   java -jar user-service/target/user-service-*.jar
+
+   # Terminal 2: Run Email Service
+   java -jar email-service/target/email-service-*.jar
+   ```
 
 ## Architecture
 
@@ -59,18 +86,12 @@ This project demonstrates a microservices architecture where:
 - **User Microservice**: Manages user-related data using PostgreSQL as its database
 - **Email Microservice**: Handles email operations using MySQL as its database
 - Each service has its own independent database, showcasing the database per service pattern
-- Services communicate asynchronously through RabbitMQ; REST-style endpoints may be used where appropriate for interactivity or integration
+- Services communicate asynchronously via RabbitMQ for event-driven workflows (e.g., sending a welcome email on user creation).
+- Synchronous communication is handled via REST APIs where immediate responses are needed.
 - Services are independently deployable and scalable
 - Data consistency is maintained through event-driven patterns
 - The use of different database technologies for different services demonstrates the independence and flexibility of each microservice to choose its own data storage solution
 - Design patterns and code quality practices (Clean Code, SOLID, etc.) are applied throughout the codebase to improve maintainability and readability
-
-## Learning Outcomes
-
-By studying this project, you will understand:
-
-- REST architecture and when to use HTTP-based resource interactions alongside messaging
-- Design patterns and code-quality practices such as Clean Code and SOLID principles
 
 ---
 
