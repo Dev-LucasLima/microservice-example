@@ -59,8 +59,8 @@ This example project serves as a learning resource to:
      - Gmail documentation to create App Password: [here](https://support.google.com/mail/answer/185833)
    - Update the `application.properties` file in the `email-service` with your SMTP connetion details.
 
-   > [!WARNING]
-   > If you want other mail server, consult documentation this mail server to configure the `application.properties`
+> [!IMPORTANT]  
+> If you want other mail server, consult documentation this mail server to configure the `application.properties`
 
 5. **Build the Project:**
 
